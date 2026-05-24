@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import {
   ArrowRight,
-  Building2,
+  // Building2,
   Cloud,
   Code2,
   CreditCard,
