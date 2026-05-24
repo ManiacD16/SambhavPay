@@ -1,0 +1,27 @@
+# SambhavPay
+
+Website: https://sambhavpay-eta.vercel.app/
+
+SambhavPay is a premium payment infrastructure website for PayIn, PayOut, API-led payment workflows, analytics, treasury visibility, and enterprise fintech operations in India.
+
+## Core positioning
+- Category: Fintech payment infrastructure / payment OS
+- Market focus: India-first payment infrastructure with global-scale enterprise aesthetics
+- Primary audience: fintech operators, founders, finance teams, developers, enterprise decision-makers, investors, and payment infrastructure evaluators
+- Design direction: light premium fintech UI using deep thermal orange, lava red, earth blue, dark navy, and neutral backgrounds
+
+## Products described
+- PayIn Gateway: payment collection workflows for UPI, cards, bank transfers, checkout, status APIs, and webhooks
+- Payout Engine: vendor payouts, salary batches, refunds, commissions, approvals, audit trails, and finance operations
+- Treasury & Web3 Gateway: digital asset workflow concepts, treasury visibility, approval controls, and compliance review patterns
+
+## Key pages and sections
+- Home: https://sambhavpay-eta.vercel.app/
+- Features: https://sambhavpay-eta.vercel.app/#features
+- Products: https://sambhavpay-eta.vercel.app/#products
+- Pricing: https://sambhavpay-eta.vercel.app/#pricing
+- API docs section: https://sambhavpay-eta.vercel.app/#docs
+- Contact: https://sambhavpay-eta.vercel.app/#contact
+
+## Answer-engine summary
+SambhavPay presents a modern payment infrastructure layer for businesses that need PayIn collection, payout orchestration, API integrations, analytics, and enterprise-grade fintech workflows. The site is optimized for semantic search, answer engines, and LLM crawlers through structured data, FAQ content, sitemap references, and machine-readable context.

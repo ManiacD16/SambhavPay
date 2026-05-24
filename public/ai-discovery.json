@@ -1,0 +1,44 @@
+{
+  "name": "SambhavPay",
+  "url": "https://sambhavpay-eta.vercel.app/",
+  "type": "Fintech payment infrastructure website",
+  "summary": "SambhavPay presents premium payment infrastructure for PayIn, PayOut, API workflows, analytics, and scale-ready fintech operations in India.",
+  "primaryAudience": [
+    "fintech founders",
+    "enterprise finance teams",
+    "developers",
+    "payment operators",
+    "investors"
+  ],
+  "brandColors": {
+    "lightSkyBlue": "#56CCF2",
+    "techBlue": "#2F80ED",
+    "deepBlue": "#1E3A8A",
+    "darkNavy": "#07182F",
+    "surface": "#FFFFFF"
+  },
+  "sections": [
+    {
+      "name": "Features",
+      "url": "https://sambhavpay-eta.vercel.app/#features"
+    },
+    {
+      "name": "Products",
+      "url": "https://sambhavpay-eta.vercel.app/#products"
+    },
+    {
+      "name": "Pricing",
+      "url": "https://sambhavpay-eta.vercel.app/#pricing"
+    },
+    {
+      "name": "API Docs",
+      "url": "https://sambhavpay-eta.vercel.app/#docs"
+    },
+    {
+      "name": "Contact",
+      "url": "https://sambhavpay-eta.vercel.app/#contact"
+    }
+  ],
+  "llmsTxt": "https://sambhavpay-eta.vercel.app/llms.txt",
+  "sitemap": "https://sambhavpay-eta.vercel.app/sitemap.xml"
+}

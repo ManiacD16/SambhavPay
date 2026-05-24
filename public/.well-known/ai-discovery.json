@@ -1,0 +1,7 @@
+{
+  "name": "SambhavPay",
+  "url": "https://sambhavpay-eta.vercel.app/",
+  "llmsTxt": "https://sambhavpay-eta.vercel.app/llms.txt",
+  "sitemap": "https://sambhavpay-eta.vercel.app/sitemap.xml",
+  "summary": "Premium fintech payment infrastructure website for PayIn, PayOut, APIs, analytics, and enterprise operations."
+}
