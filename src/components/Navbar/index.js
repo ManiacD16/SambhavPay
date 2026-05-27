@@ -63,7 +63,7 @@ export default function Navbar({
 
       <nav
         aria-label="Primary navigation"
-        className={`site-navbar ${themeClass} ${scrollClass}`}
+        className={`site-navbar ${scrollClass}`} //${themeClass} 
       >
         <div className="nav-shell">
           <button
@@ -167,13 +167,13 @@ export default function Navbar({
       <button
         type="button"
         aria-label="Close mobile menu overlay"
-        className={`mobile-menu-overlay ${themeClass} ${drawerClass}`}
+        className={`mobile-menu-overlay  ${drawerClass}`}// ${themeClass}
         onClick={() => setMenuOpen(false)}
       />
 
       <aside
         aria-label="Mobile navigation"
-        className={`mobile-drawer ${themeClass} ${drawerClass}`}
+        className={`mobile-drawer ${drawerClass}`} //${themeClass}
       >
         <div className="mobile-drawer-header">
           <div>
