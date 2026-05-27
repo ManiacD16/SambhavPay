@@ -4,7 +4,7 @@ import { site } from "../../config/site";
 
 const resolveHref = (label) => {
   const key = label.toLowerCase();
-  if (key.includes("payin") || key.includes("payout") || key.includes("treasury")) return "#products";
+  if (key.includes("payment") || key.includes("payout") || key.includes("virtual") || key.includes("merchant")) return "#products";
   if (key.includes("api") || key.includes("docs") || key.includes("webhook")) return "#docs";
   if (key.includes("contact") || key.includes("partnership")) return "#contact";
   if (key.includes("sitemap")) return "/sitemap.xml";
@@ -35,7 +35,7 @@ export default function Footer({ c, scrollTo }) {
               <span style={{ fontFamily: "'Clash Display', sans-serif", fontSize: 24, fontWeight: 700, color: c.hTag }}>SambhavPay</span>
             </div>
             <p style={{ fontSize: 14, color: c.muted, lineHeight: 1.8, maxWidth: 320, marginBottom: 20 }}>
-              Premium payment infrastructure for PayIn, PayOut, API workflows, analytics, and scale-ready fintech operations.
+              Premium payment infrastructure for payment gateway, orchestration, payouts, verification, virtual accounts, merchant onboarding and white-label fintech operations.
             </p>
             <a href={site.url} style={{ fontSize: 13, color: c.accent, fontWeight: 750, display: "inline-block", marginBottom: 18 }}>{site.domain}</a>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>

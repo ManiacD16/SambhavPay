@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { navItems } from "../../utils/data";
+import { productNavItems } from "../../data/products";
 import { PrimaryButton, OutlineButton, ThemeToggle } from "../UI";
 
 export default function Navbar({
@@ -9,7 +11,10 @@ export default function Navbar({
   scrolled,
   active,
   scrollTo,
+  navigateToProductsOverview,
+  navigateToProduct,
 }) {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentActive, setCurrentActive] = useState(active || "home");
 
@@ -26,6 +31,25 @@ export default function Navbar({
     setMenuOpen(false);
     scrollTo(id);
   };
+
+  const handleProductsOverviewClick = () => {
+    setCurrentActive("products");
+    setMenuOpen(false);
+    navigateToProductsOverview?.();
+  };
+
+  const handleProductClick = (slug) => {
+    setCurrentActive("products");
+    setMenuOpen(false);
+    navigateToProduct?.(slug);
+  };
+
+  const handleAuthClick = () => {
+  setCurrentActive("auth");
+  setMenuOpen(false);
+  navigate("/login");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   const themeClass = isDark ? "is-dark" : "is-light";
   const scrollClass = scrolled ? "is-scrolled" : "";
@@ -48,43 +72,84 @@ export default function Navbar({
             onClick={() => handleNavClick("home")}
             className="brand-lockup"
           >
-            <span className="brand-mark">
-              <span />
-            </span>
-
-            <span className="brand-text">
-              <span>SambhavPay</span>
-              <small>Empowering Digital Bharat</small>
+            <span className="navbar-logo-wrapper">
+              <img src="/Logo.png" alt="SambhavPay" className="navbar-logo-img" />
             </span>
           </button>
 
           <div className="desktop-nav">
-            {navItems.map((item) => (
-              <button
-                type="button"
-                key={item}
-                onClick={() => handleNavClick(item)}
-                aria-current={currentActive === item ? "page" : undefined}
-                className={`nav-link ${
-                  currentActive === item ? "is-active" : ""
-                }`}
-              >
-                {item}
-                {currentActive === item && <span aria-hidden="true" />}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = currentActive === item;
+
+              if (item === "products") {
+                return (
+                  <div key={item} className="nav-dropdown-wrap">
+                    <button
+                      type="button"
+                      onClick={handleProductsOverviewClick}
+                      aria-current={isActive ? "page" : undefined}
+                      aria-haspopup="true"
+                      className={`nav-link nav-link-with-arrow ${isActive ? "is-active" : ""}`}
+                    >
+                      Products
+                      <span className="nav-chevron" aria-hidden="true">⌄</span>
+                      {isActive && <span className="nav-active-line" aria-hidden="true" />}
+                    </button>
+
+                    <div className="products-dropdown" role="menu" aria-label="Products menu">
+                      <div className="products-dropdown-highlight">
+                        <strong>Payment Orchestration</strong>
+                        <span>Smart Routing. Higher Success Rates</span>
+                        <small>Multi-bank routing · Failover · Optimization</small>
+                      </div>
+
+                      <div className="products-dropdown-list">
+                        {productNavItems.map((product) => (
+                          <button
+                            type="button"
+                            key={product.slug}
+                            role="menuitem"
+                            onClick={() => handleProductClick(product.slug)}
+                            className="products-dropdown-item"
+                          >
+                            <span>{product.icon}</span>
+                            <div>
+                              <strong>{product.label}</strong>
+                              <small>{product.description}</small>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <button
+                  type="button"
+                  key={item}
+                  onClick={() => handleNavClick(item)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`nav-link ${isActive ? "is-active" : ""}`}
+                >
+                  {item}
+                  {isActive && <span className="nav-active-line" aria-hidden="true" />}
+                </button>
+              );
+            })}
           </div>
 
           <div className="nav-actions">
             <ThemeToggle mode={mode} onToggle={toggleTheme} c={c} />
 
             <PrimaryButton
-              gradient={c.grad1}
-              className="desktop-action nav-cta"
-              onClick={() => handleNavClick("contact")}
-            >
-              Contact Us
-            </PrimaryButton>
+  gradient={c.grad1}
+  className="desktop-action nav-cta"
+  onClick={handleAuthClick}
+>
+  Login / Signup
+</PrimaryButton>
 
             <button
               type="button"
@@ -132,14 +197,30 @@ export default function Navbar({
 
         <div className="mobile-nav-links">
           {navItems.map((item) => (
-            <button
-              type="button"
-              key={item}
-              onClick={() => handleNavClick(item)}
-              className={currentActive === item ? "is-active" : ""}
-            >
-              {item}
-            </button>
+            <React.Fragment key={item}>
+              <button
+                type="button"
+                onClick={() => item === "products" ? handleProductsOverviewClick() : handleNavClick(item)}
+                className={currentActive === item ? "is-active" : ""}
+              >
+                {item}
+              </button>
+
+              {item === "products" && (
+                <div className="mobile-product-links">
+                  {productNavItems.map((product) => (
+                    <button
+                      type="button"
+                      key={product.slug}
+                      onClick={() => handleProductClick(product.slug)}
+                    >
+                      <span>{product.icon}</span>
+                      {product.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
 
@@ -153,12 +234,12 @@ export default function Navbar({
           </OutlineButton>
 
           <PrimaryButton
-            gradient={c.grad1}
-            className="drawer-action-btn"
-            onClick={() => handleNavClick("contact")}
-          >
-            Partner With Us
-          </PrimaryButton>
+  gradient={c.grad1}
+  className="drawer-action-btn"
+  onClick={handleAuthClick}
+>
+  Login / Signup
+</PrimaryButton>
         </div>
       </aside>
     </>

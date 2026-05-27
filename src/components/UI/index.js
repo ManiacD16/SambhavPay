@@ -112,7 +112,7 @@ export function PrimaryButton({ children, onClick, style = {}, gradient, classNa
     <button type={type} onClick={onClick} className={className} style={{
       background: gradient || "linear-gradient(135deg, #56CCF2, #2F80ED)",
       border: "none", color: "#fff", borderRadius: 14,
-      padding: "14px 28px", fontSize: 15, fontWeight: 750,
+      padding: "8px 10px", fontSize: 15, fontWeight: 750,
       cursor: "pointer", fontFamily: "inherit", letterSpacing: "0.2px",
       boxShadow: "0 12px 34px rgba(47, 128, 237, 0.26)",
       transition: "transform 0.25s, box-shadow 0.25s, filter 0.25s", willChange: "transform",

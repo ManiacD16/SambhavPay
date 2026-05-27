@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   ArrowRight,
   // Building2,
@@ -217,9 +217,8 @@ function ParticleCanvas({ particleColor }) {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${particleColor},${
-              0.12 * (1 - d / 120)
-            })`;
+            ctx.strokeStyle = `rgba(${particleColor},${0.12 * (1 - d / 120)
+              })`;
             ctx.lineWidth = 0.45;
             ctx.stroke();
           }
@@ -286,7 +285,7 @@ function HeroBadge() {
   return (
     <div className="hero-badge fade-in">
       <span />
-      TSP & FINTECH API COMPANY
+      FULL-STACK FINTECH & PAYMEN ORCHESTRATION PLATFORM
     </div>
   );
 }
@@ -377,7 +376,8 @@ function ApiCoreVisual() {
 
       <div className="core-top">
         <div className="core-logo">
-          <span />
+        <img src="/BrandLogo.png" alt="SambhavPay" />
+          {/* <span /> */}
         </div>
       </div>
     </div>
@@ -437,15 +437,33 @@ function HeroVisual() {
         <ServiceNode key={node.className} item={node} />
       ))}
 
-      <AssurancePanel />
+     
     </div>
   );
 }
 
-export default function Hero({ c, scrollTo }) {
+export default function Hero({ c, scrollTo, active }) {
   const isDark = c.mode === "dark";
   const themeClass = isDark ? "is-dark" : "is-light";
   const particleColor = isDark ? c.particleColor || "37,99,255" : "37,99,255";
+
+    const [currentActive, setCurrentActive] = useState(active || "home");
+
+  useEffect(() => {
+    if (active) {
+      setCurrentActive(active);
+    }
+  }, [active]);
+
+
+
+  const handleNavClick = (id) => {
+    setCurrentActive(id);
+    // setMenuOpen(false);
+    scrollTo(id);
+  };
+
+  
 
   return (
     <section id="home" className={`hero-api-section ${themeClass}`}>
@@ -465,25 +483,36 @@ export default function Hero({ c, scrollTo }) {
           </h1>
 
           <p className="hero-api-sub fade-in-2">
-            SambhavPay empowers businesses with robust, secure & scalable
-            fintech APIs to build the next generation financial ecosystem.
+            SambhavPay provides a complete fintech infrastructure for businesses—enabling seamless payments, smart routing, payouts, and banking APIs through a single, scalable platform.
+
           </p>
 
           <div className="hero-api-actions fade-in-3">
-            <PrimaryButton gradient={c.grad1} onClick={() => scrollTo("products")}>
-              Explore Products <ArrowRight className="hero-action-icon" size={16} />
-            </PrimaryButton>
 
-            <OutlineButton c={c} onClick={() => scrollTo("docs")}>
-              Get API Access <Code2 className="hero-action-icon" size={16} />
+            <PrimaryButton
+                          gradient={c.grad1}
+                          className="desktop-action nav-cta"
+                          onClick={() => handleNavClick("contact")}
+                        >
+                          Contact Sales
+                        </PrimaryButton>
+            <OutlineButton c={c} onClick={() => scrollTo("products")}>
+              Explore Products <ArrowRight className="hero-action-icon" size={16} />
             </OutlineButton>
+
+            
           </div>
 
-          <ProductStrip />
-          <HeroStats />
+          {/* <ProductStrip /> */}
+          
         </div>
 
         <HeroVisual />
+      </div>
+      
+   <div className="hero-footer-panels">
+        <HeroStats />
+        <AssurancePanel />
       </div>
     </section>
   );

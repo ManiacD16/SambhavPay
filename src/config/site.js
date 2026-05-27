@@ -4,9 +4,9 @@ export const site = {
   url: "https://sambhavpay-eta.vercel.app/",
   domain: "https://sambhavpay-eta.vercel.app",
   description:
-    "SambhavPay is a premium payment infrastructure platform for PayIn, PayOut, API-led collections, treasury visibility, and enterprise fintech operations in India.",
+    "SambhavPay is a premium payment infrastructure platform for payment gateway, payment orchestration, payouts, verification APIs, virtual accounts, merchant onboarding, and white-label fintech operations in India.",
   shortDescription:
-    "Enterprise-grade payment infrastructure for PayIn, PayOut, API integrations, analytics, and scale-ready fintech operations.",
+    "Enterprise-grade payment infrastructure for payment collection, smart routing, payouts, verification, virtual accounts, onboarding, and scale-ready fintech operations.",
   apiBaseUrl: "https://api.SambhavPay.in/v1",
   contactPath: "https://sambhavpay-eta.vercel.app/#contact",
   docsPath: "https://sambhavpay-eta.vercel.app/#docs",

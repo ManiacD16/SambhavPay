@@ -4,7 +4,8 @@ import Hero from "../components/Hero";
 import Features from "../components/Features";
 import Products from "../components/Products";
 import Dashboard from "../components/Dashboard";
-import Pricing from "../components/Pricing";
+// import Pricing from "../components/Pricing";
+import FullStackFintech from "../components/FullStackFintech";
 import Docs from "../components/Docs";
 import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
@@ -115,7 +116,8 @@ export default function Home({ c, scrollTo }) {
       <Features c={c} />
       <Products c={c} />
       <Dashboard c={c} />
-      <Pricing c={c} scrollTo={scrollTo} />
+      {/* <Pricing c={c} scrollTo={scrollTo} /> */}
+      <FullStackFintech c={c} scrollTo={scrollTo} />
       <Docs c={c} />
       <FAQ c={c} />
       <Contact c={c} />

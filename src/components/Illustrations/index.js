@@ -57,43 +57,6 @@ export function PayOutIllustration({ c }) {
   );
 }
 
-export function CryptoIllustration({ c }) {
-  const coins = [
-    { angle: 0,   label: "BTC",   col: c.gold   },
-    { angle: 60,  label: "ETH",   col: c.purple  },
-    { angle: 120, label: "USDT",  col: c.green   },
-    { angle: 180, label: "SOL",   col: c.accent  },
-    { angle: 240, label: "BNB",   col: c.gold    },
-    { angle: 300, label: "MATIC", col: c.purple  },
-  ];
-  return (
-    <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%" }}>
-      <circle cx="160" cy="110" r="88" fill="none" stroke={c.gold} strokeWidth="0.5" strokeOpacity="0.18" strokeDasharray="8,5"/>
-      <circle cx="160" cy="110" r="58" fill="none" stroke={c.gold} strokeWidth="0.5" strokeOpacity="0.28" strokeDasharray="4,6"/>
-      <circle cx="160" cy="110" r="30" fill={c.gold} fillOpacity="0.12" stroke={c.gold} strokeWidth="1.2" strokeOpacity="0.5"/>
-      <text x="160" y="117" fontSize="22" textAnchor="middle" fill={c.gold} fontWeight="700">₿</text>
-      {coins.map((coin, i) => {
-        const rad = (coin.angle - 90) * Math.PI / 180;
-        const cx2 = 160 + 88 * Math.cos(rad);
-        const cy2 = 110 + 88 * Math.sin(rad);
-        return (
-          <g key={i}>
-            <line x1={160 + 30 * Math.cos(rad)} y1={110 + 30 * Math.sin(rad)}
-              x2={cx2 - 18 * Math.cos(rad)} y2={cy2 - 18 * Math.sin(rad)}
-              stroke={coin.col} strokeWidth="0.8" strokeOpacity="0.45"/>
-            <circle cx={cx2} cy={cy2} r="18" fill={coin.col} fillOpacity="0.15" stroke={coin.col} strokeWidth="0.8" strokeOpacity="0.6"/>
-            <text x={cx2} y={cy2 + 4} fontSize="9" textAnchor="middle" fill={coin.col} fontWeight="700">{coin.label}</text>
-          </g>
-        );
-      })}
-      <rect x="8" y="8" width="56" height="22" rx="6" fill={c.green} fillOpacity="0.15" stroke={c.green} strokeWidth="0.5"/>
-      <text x="36" y="23" fontSize="9" textAnchor="middle" fill={c.green} fontWeight="700">+2.4% ↑</text>
-      <rect x="256" y="190" width="56" height="22" rx="6" fill={c.red} fillOpacity="0.15" stroke={c.red} strokeWidth="0.5"/>
-      <text x="284" y="205" fontSize="9" textAnchor="middle" fill={c.red} fontWeight="700">-0.8% ↓</text>
-    </svg>
-  );
-}
-
 export function DashboardIllustration({ c }) {
   const bars = [40, 80, 60, 100, 70, 90, 55, 95, 75, 110, 85, 120];
   return (
@@ -206,6 +169,6 @@ export function APIIllustration({ c }) {
 }
 
 export function getIllustration(key) {
-  const map = { payin: PayInIllustration, payout: PayOutIllustration, crypto: CryptoIllustration, dashboard: DashboardIllustration, security: SecurityIllustration, api: APIIllustration };
+  const map = { payin: PayInIllustration, payout: PayOutIllustration, dashboard: DashboardIllustration, security: SecurityIllustration, api: APIIllustration };
   return map[key] || PayInIllustration;
 }
