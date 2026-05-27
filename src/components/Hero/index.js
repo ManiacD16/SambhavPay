@@ -449,12 +449,14 @@ export default function Hero({ c, scrollTo, active }) {
 
     const [currentActive, setCurrentActive] = useState(active || "home");
 
+    console.log("Current active section:", currentActive);
+
   useEffect(() => {
     if (active) {
       setCurrentActive(active);
-      console.log(currentActive)
+      console.log(currentActive);
     }
-  }, [active]);
+  }, [active, currentActive]);
 
 
 
