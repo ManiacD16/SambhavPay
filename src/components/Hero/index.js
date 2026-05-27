@@ -290,27 +290,27 @@ function HeroBadge() {
   );
 }
 
-function ProductStrip() {
-  return (
-    <div className="product-strip fade-in-4">
-      {PRODUCT_CARDS.map((item) => {
-        const Icon = item.icon;
+// function ProductStrip() {
+//   return (
+//     <div className="product-strip fade-in-4">
+//       {PRODUCT_CARDS.map((item) => {
+//         const Icon = item.icon;
 
-        return (
-          <div
-            className="product-mini-card"
-            key={item.label}
-            style={{ "--mini-color": item.color }}
-          >
-            <Icon size={25} strokeWidth={1.8} />
-            <strong>{item.label}</strong>
-            <span>{item.sub}</span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+//         return (
+//           <div
+//             className="product-mini-card"
+//             key={item.label}
+//             style={{ "--mini-color": item.color }}
+//           >
+//             <Icon size={25} strokeWidth={1.8} />
+//             <strong>{item.label}</strong>
+//             <span>{item.sub}</span>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
 function HeroStats() {
   return (
@@ -447,7 +447,7 @@ export default function Hero({ c, scrollTo, active }) {
   const themeClass = isDark ? "is-dark" : "is-light";
   const particleColor = isDark ? c.particleColor || "37,99,255" : "37,99,255";
 
-    const [currentActive, setCurrentActive] = useState(active || "home");
+    const [ setCurrentActive] = useState(active || "home");
 
   useEffect(() => {
     if (active) {
