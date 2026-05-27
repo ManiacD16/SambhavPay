@@ -248,7 +248,8 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
   --core-layer-3: linear-gradient(135deg, #32146e, #14245f 58%, #00b7ff);
   --core-layer-2: linear-gradient(135deg, #0b1e5e, #1556d9 52%, #00b7ff);
   --core-layer-1: linear-gradient(135deg, #0b1d4a, #133e91 52%, #153572);
-  --core-top: linear-gradient(145deg, #08275d, #0b3ea2 56%, #13235b);
+  --core-top: linear-gradient(145deg, #94a8ca, #6f84af 56%, #3552b8);
+  /* --core-top: linear-gradient(145deg, #08275d, #0b3ea2 56%, #13235b); */
 }
 
 .hero-api-section.is-light {
@@ -629,15 +630,15 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
 .core-logo {
   width: 104px;
   height: 104px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, #00b7ff, #275bff 48%, #7c3aed);
+  /* border-radius: 28px; */
+  /* background: linear-gradient(135deg, #00b7ff, #275bff 48%, #7c3aed); */
   display: grid;
   place-items: center;
-  box-shadow: 0 0 34px rgba(37, 99, 255, 0.48);
-  transform: rotate(45deg);
+  /* box-shadow: 0 0 34px rgba(37, 99, 255, 0.48); */
+  transform: rotate(76deg);
 }
 
-.core-logo span {
+/* .core-logo span {
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -645,7 +646,7 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
   display: block;
   transform: rotate(45deg);
   clip-path: polygon(24% 0, 100% 0, 76% 100%, 0 100%);
-}
+} */
 
 .hero-node {
   position: absolute;
