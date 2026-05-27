@@ -16,44 +16,44 @@ import {
 } from "lucide-react";
 import { PrimaryButton, OutlineButton } from "../UI";
 
-const PRODUCT_CARDS = [
-  {
-    icon: Send,
-    label: "DMT",
-    sub: "Domestic Money Transfer",
-    color: "#8B5CF6",
-  },
-  {
-    icon: Fingerprint,
-    label: "AEPS",
-    sub: "Aadhaar Enabled Payment System",
-    color: "#22C985",
-  },
-  {
-    icon: ReceiptText,
-    label: "BBPS",
-    sub: "Bharat Bill Payment System",
-    color: "#A855F7",
-  },
-  {
-    icon: CreditCard,
-    label: "Payment Gateway",
-    sub: "Secure & Fast Transactions",
-    color: "#2563FF",
-  },
-  {
-    icon: Users,
-    label: "Vendor Payout",
-    sub: "Automated Disbursement",
-    color: "#22C985",
-  },
-  {
-    icon: Tag,
-    label: "WhiteLabel Solutions",
-    sub: "Launch Your Brand in No Time",
-    color: "#F59E0B",
-  },
-];
+// const PRODUCT_CARDS = [
+//   {
+//     icon: Send,
+//     label: "DMT",
+//     sub: "Domestic Money Transfer",
+//     color: "#8B5CF6",
+//   },
+//   {
+//     icon: Fingerprint,
+//     label: "AEPS",
+//     sub: "Aadhaar Enabled Payment System",
+//     color: "#22C985",
+//   },
+//   {
+//     icon: ReceiptText,
+//     label: "BBPS",
+//     sub: "Bharat Bill Payment System",
+//     color: "#A855F7",
+//   },
+//   {
+//     icon: CreditCard,
+//     label: "Payment Gateway",
+//     sub: "Secure & Fast Transactions",
+//     color: "#2563FF",
+//   },
+//   {
+//     icon: Users,
+//     label: "Vendor Payout",
+//     sub: "Automated Disbursement",
+//     color: "#22C985",
+//   },
+//   {
+//     icon: Tag,
+//     label: "WhiteLabel Solutions",
+//     sub: "Launch Your Brand in No Time",
+//     color: "#F59E0B",
+//   },
+// ];
 
 const NODE_CARDS = [
   {
@@ -447,7 +447,7 @@ export default function Hero({ c, scrollTo, active }) {
   const themeClass = isDark ? "is-dark" : "is-light";
   const particleColor = isDark ? c.particleColor || "37,99,255" : "37,99,255";
 
-    const [ setCurrentActive] = useState(active || "home");
+    const setCurrentActive = useState(active || "home");
 
   useEffect(() => {
     if (active) {
