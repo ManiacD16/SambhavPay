@@ -447,11 +447,12 @@ export default function Hero({ c, scrollTo, active }) {
   const themeClass = isDark ? "is-dark" : "is-light";
   const particleColor = isDark ? c.particleColor || "37,99,255" : "37,99,255";
 
-    const setCurrentActive = useState(active || "home");
+    const [currentActive, setCurrentActive] = useState(active || "home");
 
   useEffect(() => {
     if (active) {
       setCurrentActive(active);
+      console.log(currentActive)
     }
   }, [active]);
 
