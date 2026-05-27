@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { navItems } from "../../utils/data";
 import { productNavItems } from "../../data/products";
-import { PrimaryButton, OutlineButton, ThemeToggle } from "../UI";
+import { PrimaryButton, OutlineButton } from "../UI"; //ThemeToggle
 
 export default function Navbar({
   c,
-  mode,
-  toggleTheme,
+  // mode,
+  // toggleTheme,
   scrolled,
   active,
   scrollTo,
@@ -18,7 +18,7 @@ export default function Navbar({
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentActive, setCurrentActive] = useState(active || "home");
 
-  const isDark = mode === "dark";
+  // const isDark = mode === "dark";
 
   useEffect(() => {
     if (active) {
@@ -51,7 +51,7 @@ export default function Navbar({
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-  const themeClass = isDark ? "is-dark" : "is-light";
+  // const themeClass = isDark ? "is-dark" : "is-light";
   const scrollClass = scrolled ? "is-scrolled" : "";
   const drawerClass = menuOpen ? "is-open" : "";
 
@@ -141,7 +141,7 @@ export default function Navbar({
           </div>
 
           <div className="nav-actions">
-            <ThemeToggle mode={mode} onToggle={toggleTheme} c={c} />
+            {/* <ThemeToggle mode={mode} onToggle={toggleTheme} c={c} /> */}
 
             <PrimaryButton
   gradient={c.grad1}
@@ -191,9 +191,9 @@ export default function Navbar({
           </button>
         </div>
 
-        <div className="drawer-theme-toggle">
+        {/* <div className="drawer-theme-toggle">
           <ThemeToggle mode={mode} onToggle={toggleTheme} c={c} />
-        </div>
+        </div> */}
 
         <div className="mobile-nav-links">
           {navItems.map((item) => (
