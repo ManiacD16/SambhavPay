@@ -376,6 +376,7 @@ function ApiCoreVisual() {
 
       <div className="core-top">
         <div className="core-logo">
+          {/*  */}
         <img src="/BrandLogo.png" alt="SambhavPay" />
           {/* <span /> */}
         </div>
