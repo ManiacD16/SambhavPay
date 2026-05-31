@@ -1,6 +1,6 @@
 import { site } from "../config/site";
 
-export const navItems = ["home", "features", "products", "pricing", "docs", "contact"];
+export const navItems = ["home", "features", "products", "docs", "contact"];
 
 export const stats = [
   { end: 10000, suffix: "+", label: "Businesses enabled" },

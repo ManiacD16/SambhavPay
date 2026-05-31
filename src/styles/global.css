@@ -393,7 +393,7 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
 }
 
 .hero-api-title span {
-  background: linear-gradient(90deg, #1d7dff 0%, #275bff 42%, #7c3aed 100%);
+  background: linear-gradient(135deg,#56CCF2 0%,#2F80ED 52%,#1E3A8A 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1130,7 +1130,7 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
   bottom: -9px;
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #00b7ff, #275bff 48%, #7c3aed);
+  background: linear-gradient(135deg,#56CCF2 0%,#2F80ED 52%,#1E3A8A 100%);
   box-shadow: 0 0 18px rgba(37, 99, 255, 0.68);
 }
 
@@ -1189,12 +1189,15 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
   transform: translateX(105%);
   transition: transform 0.35s cubic-bezier(0.22, 0.68, 0, 1);
   padding: 28px;
+  padding-bottom: 42px;        /* extra breathing room at bottom */
   display: flex;
   flex-direction: column;
   box-shadow: var(--drawer-shadow);
   border-left: 1px solid var(--drawer-border);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+  overflow-y: auto;            /* allows scrolling when content overflows */
+  -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
 }
 
 .mobile-drawer.is-open {
@@ -1340,13 +1343,12 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
 .nav-chevron {
   font-size: 16px;
   line-height: 1;
-  transform: translateY(-1px);
+  transform: translateY(-2px);   /* nudges span UP so ⌄ glyph sits on centre line */
   transition: transform 0.2s ease;
 }
 
-.nav-dropdown-wrap:hover .nav-chevron,
-.nav-dropdown-wrap:focus-within .nav-chevron {
-  transform: translateY(-1px) rotate(180deg);
+.nav-dropdown-wrap.is-dropdown-open .nav-chevron {
+  transform: translateY(2px) rotate(180deg);
 }
 
 .products-dropdown {
@@ -1371,8 +1373,7 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
 }
 
-.nav-dropdown-wrap:hover .products-dropdown,
-.nav-dropdown-wrap:focus-within .products-dropdown {
+.nav-dropdown-wrap.is-dropdown-open .products-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

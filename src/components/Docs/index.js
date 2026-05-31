@@ -15,18 +15,18 @@ export default function Docs({ c }) {
   return (
     <section id="docs" className="section" style={{ background: c.bg }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="docs-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "flex-start" }} className="docs-grid">
           <div>
             <SectionBadge color={c.gold} bg={c.gold + "14"} border={c.gold + "30"}>API Docs</SectionBadge>
             <SectionTitle style={{ color: c.hTag }}>
-              Integrate in<br /><GradientText gradient={c.grad3}>Under an Hour</GradientText>
+              Integrate in<br /><GradientText gradient={c.grad1}>Under an Hour</GradientText>
             </SectionTitle>
             <p style={{ fontSize: 17, color: c.muted, lineHeight: 1.78, marginBottom: 32, fontWeight: 400 }}>
               Clear APIs, signed webhooks, predictable statuses, and a developer journey built for fast evaluation and clean handoff to production teams.
             </p>
             {docItems.map((f, i) => <CheckItem key={i} color={c.gold}>{f}</CheckItem>)}
             <div style={{ display: "flex", gap: 14, marginTop: 32, flexWrap: "wrap" }}>
-              <PrimaryButton gradient={c.grad3} style={{ boxShadow: `0 10px 34px ${c.gold}28` }} onClick={() => window.open(site.docsPath, "_self")}>Read Full Docs</PrimaryButton>
+              <PrimaryButton gradient={c.grad1} style={{ boxShadow: `0 10px 34px ${c.gold}28` }} onClick={() => window.open(site.docsPath, "_self")}>Read Full Docs</PrimaryButton>
               <OutlineButton c={c} onClick={() => window.open(`${site.url}llms.txt`, "_blank", "noopener,noreferrer")}>AI Discovery →</OutlineButton>
             </div>
           </div>

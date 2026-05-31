@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { navItems } from "../../utils/data";
 import { productNavItems } from "../../data/products";
 import { PrimaryButton, OutlineButton } from "../UI"; //ThemeToggle
@@ -17,30 +17,49 @@ export default function Navbar({
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentActive, setCurrentActive] = useState(active || "home");
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const location = useLocation();
+const scrollPending = useRef(false);
 
   // const isDark = mode === "dark";
 
-  useEffect(() => {
-    if (active) {
-      setCurrentActive(active);
-    }
-  }, [active]);
+useEffect(() => {
+  if (active && !scrollPending.current) {
+    setCurrentActive(active);
+  }
+}, [active]);
 
-  const handleNavClick = (id) => {
-    setCurrentActive(id);
-    setMenuOpen(false);
+const handleNavClick = (id) => {
+  scrollPending.current = true;           // block useEffect from overwriting
+  setCurrentActive(id);
+  setMenuOpen(false);
+  setMobileProductsOpen(false);
+  if (location.pathname !== "/") {
+    navigate("/");                        // go home first
+    setTimeout(() => {
+      scrollTo(id);
+      scrollPending.current = false;
+    }, 120);                              // wait for navigation to settle
+  } else {
     scrollTo(id);
-  };
+    scrollPending.current = false;
+  }
+};
 
   const handleProductsOverviewClick = () => {
     setCurrentActive("products");
     setMenuOpen(false);
+    setMobileProductsOpen(false);
+    setDropdownOpen(false);
     navigateToProductsOverview?.();
   };
 
   const handleProductClick = (slug) => {
     setCurrentActive("products");
     setMenuOpen(false);
+    setMobileProductsOpen(false);
+    setDropdownOpen(false);
     navigateToProduct?.(slug);
   };
 
@@ -63,7 +82,7 @@ export default function Navbar({
 
       <nav
         aria-label="Primary navigation"
-        className={`site-navbar ${scrollClass}`} //${themeClass} 
+        className={`site-navbar is-dark ${scrollClass}`} //${themeClass} 
       >
         <div className="nav-shell">
           <button
@@ -83,7 +102,12 @@ export default function Navbar({
 
               if (item === "products") {
                 return (
-                  <div key={item} className="nav-dropdown-wrap">
+                  <div
+  key={item}
+  className={`nav-dropdown-wrap ${dropdownOpen ? "is-dropdown-open" : ""}`}
+  onMouseEnter={() => setDropdownOpen(true)}
+  onMouseLeave={() => setDropdownOpen(false)}
+>
                     <button
                       type="button"
                       onClick={handleProductsOverviewClick}
@@ -167,13 +191,13 @@ export default function Navbar({
       <button
         type="button"
         aria-label="Close mobile menu overlay"
-        className={`mobile-menu-overlay  ${drawerClass}`}// ${themeClass}
-        onClick={() => setMenuOpen(false)}
+        className={`mobile-menu-overlay is-dark ${drawerClass}`}// ${themeClass}
+        onClick={() => { setMenuOpen(false); setMobileProductsOpen(false); }}
       />
 
       <aside
         aria-label="Mobile navigation"
-        className={`mobile-drawer ${drawerClass}`} //${themeClass}
+        className={`mobile-drawer is-dark ${drawerClass}`}//${themeClass}
       >
         <div className="mobile-drawer-header">
           <div>
@@ -184,7 +208,7 @@ export default function Navbar({
           <button
             type="button"
             aria-label="Close mobile menu"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => { setMenuOpen(false); setMobileProductsOpen(false); }}
             className="drawer-close"
           >
             ✕
@@ -199,15 +223,30 @@ export default function Navbar({
           {navItems.map((item) => (
             <React.Fragment key={item}>
               <button
-                type="button"
-                onClick={() => item === "products" ? handleProductsOverviewClick() : handleNavClick(item)}
-                className={currentActive === item ? "is-active" : ""}
-              >
-                {item}
-              </button>
+  type="button"
+  onClick={() =>
+    item === "products"
+      ? setMobileProductsOpen((prev) => !prev)
+      : handleNavClick(item)
+  }
+  className={currentActive === item ? "is-active" : ""}
+  style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+>
+  {item}
+  {item === "products" && (
+    <span style={{
+      fontSize: "14px",
+      transition: "transform 0.2s ease",
+      transform: mobileProductsOpen ? "rotate(180deg)" : "rotate(0deg)",
+      display: "inline-block",
+    }}>
+      ⌄
+    </span>
+  )}
+</button>
 
-              {item === "products" && (
-                <div className="mobile-product-links">
+              {item === "products" && mobileProductsOpen && (
+  <div className="mobile-product-links">
                   {productNavItems.map((product) => (
                     <button
                       type="button"
